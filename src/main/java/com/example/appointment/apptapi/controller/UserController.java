@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.appointment.api.UserApi;
-import com.example.appointment.pojo.User;
+import com.example.appointment.apptapi.api.UserApi;
+import com.example.appointment.apptapi.pojo.User;
 
 @RestController
 public class UserController {

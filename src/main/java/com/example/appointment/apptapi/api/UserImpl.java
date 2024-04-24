@@ -1,10 +1,10 @@
-package com.example.appointment.api;
+package com.example.appointment.apptapi.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.appointment.api.broker.UserBroker;
-import com.example.appointment.pojo.User;
+import com.example.appointment.apptapi.api.broker.UserBroker;
+import com.example.appointment.apptapi.pojo.User;
 
 @Component
 public class UserImpl implements UserApi {

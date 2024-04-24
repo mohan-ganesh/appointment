@@ -1,4 +1,4 @@
-package com.example.appointment.api.broker;
+package com.example.appointment.apptapi.api.broker;
 
 public @interface BrokerConstants {
 

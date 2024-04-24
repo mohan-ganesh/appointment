@@ -1,4 +1,4 @@
-package com.example.appointment.exception;
+package com.example.appointment.apptapi.exception;
 
 /**
  *

@@ -1,4 +1,4 @@
-package com.example.appointment.api.broker;
+package com.example.appointment.apptapi.api.broker;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.appointment.apptapi.config.FirestoreConfig;
-import com.example.appointment.exception.BrokerException;
-import com.example.appointment.pojo.User;
+import com.example.appointment.apptapi.exception.BrokerException;
+import com.example.appointment.apptapi.pojo.User;
+
 import java.util.concurrent.ExecutionException;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
@@ -40,7 +41,7 @@ public class UserBroker {
             }
 
         } catch (InterruptedException | ExecutionException e) {
-            throw new BrokerException("getUserDetails");
+            throw new BrokerException("getUserDetails", e);
         }
 
         return user;

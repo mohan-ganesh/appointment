@@ -1,4 +1,4 @@
-package com.example.appointment.pojo;
+package com.example.appointment.apptapi.pojo;
 
 public class User {
 

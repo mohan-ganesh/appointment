@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.appointment.api.UserApi;
+import com.example.appointment.apptapi.api.UserApi;
 import com.example.appointment.apptapi.config.FirestoreConfig;
-import com.example.appointment.pojo.User;
+import com.example.appointment.apptapi.pojo.User;
 
 @SpringBootTest
 class ApptApiApplicationTests {
