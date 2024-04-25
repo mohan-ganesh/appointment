@@ -14,6 +14,9 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+    }
+
     public String getMemberId() {
         return memberId;
     }

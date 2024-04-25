@@ -52,8 +52,11 @@ public class UserBroker {
      */
     public User createUser(User user) {
 
-        user = null;
+        String nodePath = "users";
 
+        ApiFuture<WriteResult> documentReference = firestore.getConnection().collection(nodePath)
+                .document(user.getMemberId()).create(user);
+        logger.info(documentReference.toString());
         return user;
 
     }
