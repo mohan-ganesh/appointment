@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.appointment.apptapi.api.UserApi;
 import com.example.appointment.apptapi.pojo.User;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -26,15 +28,15 @@ public class UserController {
      *
      * @return String
      */
-    @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public ResponseEntity getUserDetails(@PathVariable String memberId) {
+    @RequestMapping(path = "/user/{memberId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUserDetails(@PathVariable String memberId) {
 
         return ResponseEntity.ok(userApi.getUser(memberId));
 
     }
 
-    @RequestMapping(path = "/user", method = RequestMethod.POST)
-    public ResponseEntity createUser(@RequestBody User userInput) {
+    @RequestMapping(path = "/user", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> createUser(@RequestBody User userInput) {
 
         return ResponseEntity.ok(userApi.createUser(userInput));
 

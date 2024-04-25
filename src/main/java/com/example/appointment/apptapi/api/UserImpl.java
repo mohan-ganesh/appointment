@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import com.example.appointment.apptapi.api.broker.UserBroker;
 import com.example.appointment.apptapi.pojo.User;
 
+/**
+ * 
+ */
 @Component
 public class UserImpl implements UserApi {
 
@@ -17,7 +20,14 @@ public class UserImpl implements UserApi {
      */
     @Override
     public User getUser(String memberId) {
-        return userBroker.getUserDetails(memberId);
+        User user = userBroker.getUserDetails(memberId);
+        if (null == user) {
+            user = new User("User not found for " + memberId);
+        } else {
+            user.setComments("Retrieved the existing user " + memberId);
+        }
+
+        return user;
     }
 
     /**
@@ -28,6 +38,9 @@ public class UserImpl implements UserApi {
         User user = userBroker.getUserDetails(inputUser.getMemberId());
         if (null == user) {
             user = userBroker.createUser(inputUser);
+            user.setComments("Created new user " + inputUser.getMemberId());
+        } else {
+            user.setComments("Updated the properties for " + inputUser.getMemberId());
         }
         return user;
     }

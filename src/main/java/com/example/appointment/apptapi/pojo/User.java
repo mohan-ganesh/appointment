@@ -6,6 +6,7 @@ public class User {
     String firstName;
     String lastName;
     String email;
+    String comments;
 
     public User(String memberId, String firstName, String lastname, String email) {
         this.memberId = memberId;
@@ -15,6 +16,11 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User(String comments) {
+
+        this.comments = comments;
     }
 
     public String getMemberId() {
@@ -49,9 +55,18 @@ public class User {
         this.email = email;
     }
 
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getComments() {
+        return this.comments;
+    }
+
     @Override
     public String toString() {
         return "User [memberId=" + memberId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+                + ", comments=" + comments
                 + "]";
     }
 
