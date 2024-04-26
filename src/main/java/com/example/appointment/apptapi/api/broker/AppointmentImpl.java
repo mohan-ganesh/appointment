@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.appointment.apptapi.api.AppointmentApi;
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
+import com.example.appointment.apptapi.pojo.AppointmentSlot;
+import com.example.appointment.apptapi.pojo.User;
 
 @Component
 public class AppointmentImpl implements AppointmentApi {
@@ -27,9 +29,9 @@ public class AppointmentImpl implements AppointmentApi {
     }
 
     @Override
-    public boolean confirmAppointment() {
+    public boolean confirmAppointment(User user, AppointmentSlot appointmentSlot) {
 
-        throw new UnsupportedOperationException("Unimplemented method 'confirmAppointment'");
+        return appointmentBroker.confirmAppointment(user, appointmentSlot);
     }
 
 }

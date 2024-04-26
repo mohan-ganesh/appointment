@@ -58,4 +58,9 @@ public class AppointmentBroker {
         return listAppointmentSchedule;
     }
 
+    public boolean confirmAppointment(User user, AppointmentSlot appointmentSlot) {
+
+        return true;
+    }
+
 }

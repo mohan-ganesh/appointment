@@ -40,7 +40,10 @@ public class AppointmentController {
     }
 
     @RequestMapping(path = "/confirm", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> createAppointment() {
+    public ResponseEntity<String> createAppointment(@RequestBody User user,
+            @RequestBody AppointmentSlot appointmentSlot) {
+
+        appointmentApi.confirmAppointment(user, appointmentSlot);
 
         return ResponseEntity.ok("create appointment.");
 
