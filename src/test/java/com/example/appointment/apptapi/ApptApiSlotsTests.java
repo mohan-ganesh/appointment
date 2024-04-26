@@ -12,8 +12,11 @@ import com.example.appointment.apptapi.api.AppointmentApi;
 import com.example.appointment.apptapi.api.UserApi;
 import com.example.appointment.apptapi.config.FirestoreConfig;
 import com.example.appointment.apptapi.pojo.Appointment;
+import com.example.appointment.apptapi.pojo.AppointmentRequest;
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
+import com.example.appointment.apptapi.pojo.AppointmentSlot;
 import com.example.appointment.apptapi.pojo.User;
+import com.google.cloud.firestore.DocumentReference;
 
 @SpringBootTest
 class ApptApiSlotsTests {
@@ -64,6 +67,16 @@ class ApptApiSlotsTests {
 	@Test
 	void tesSlotDetails() {
 		List<AppointmentSchedule> list = appointmentAPI.getAppointmentSlots();
+	}
+
+	@Test
+	void testConfirmAppointment() {
+
+		AppointmentRequest request = new AppointmentRequest("12345", "John", "Doe", "johns@hohn.com", "monday_id");
+
+		AppointmentRequest appointment = appointmentAPI.confirmAppointment(request);
+
+		assertNotNull(appointment.getComments());
 	}
 
 	public int getRandomNumber(int min, int max) {

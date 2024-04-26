@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.appointment.apptapi.api.AppointmentApi;
 import com.example.appointment.apptapi.api.UserApi;
+import com.example.appointment.apptapi.pojo.AppointmentRequest;
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
 import com.example.appointment.apptapi.pojo.AppointmentSlot;
 import com.example.appointment.apptapi.pojo.User;
 import org.springframework.http.*;
+
+import com.google.cloud.firestore.DocumentReference;
 
 @RestController
 public class AppointmentController {
@@ -40,12 +43,11 @@ public class AppointmentController {
     }
 
     @RequestMapping(path = "/confirm", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> createAppointment(@RequestBody User user,
-            @RequestBody AppointmentSlot appointmentSlot) {
+    public ResponseEntity<String> createAppointment(@RequestBody AppointmentRequest appointmentRequest) {
 
-        appointmentApi.confirmAppointment(user, appointmentSlot);
+        AppointmentRequest docRef = appointmentApi.confirmAppointment(appointmentRequest);
 
-        return ResponseEntity.ok("create appointment.");
+        return ResponseEntity.ok(docRef.getComments());
 
     }
 

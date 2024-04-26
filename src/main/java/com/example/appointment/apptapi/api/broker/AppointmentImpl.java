@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.appointment.apptapi.api.AppointmentApi;
+import com.example.appointment.apptapi.pojo.AppointmentRequest;
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
 import com.example.appointment.apptapi.pojo.AppointmentSlot;
 import com.example.appointment.apptapi.pojo.User;
+import com.google.cloud.firestore.DocumentReference;
 
 @Component
 public class AppointmentImpl implements AppointmentApi {
@@ -29,9 +31,9 @@ public class AppointmentImpl implements AppointmentApi {
     }
 
     @Override
-    public boolean confirmAppointment(User user, AppointmentSlot appointmentSlot) {
+    public AppointmentRequest confirmAppointment(AppointmentRequest appointmentRequest) {
 
-        return appointmentBroker.confirmAppointment(user, appointmentSlot);
+        return appointmentBroker.confirmAppointment(appointmentRequest);
     }
 
 }

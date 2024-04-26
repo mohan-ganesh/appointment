@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
 import com.example.appointment.apptapi.pojo.AppointmentSlot;
-import com.example.appointment.apptapi.pojo.User;
+import com.example.appointment.apptapi.pojo.AppointmentRequest;
+import com.google.cloud.firestore.DocumentReference;
 
 public interface AppointmentApi {
 
@@ -12,5 +13,5 @@ public interface AppointmentApi {
 
     public List<AppointmentSchedule> getAppointmentSlots();
 
-    public boolean confirmAppointment(User user, AppointmentSlot appointmentSlot);
+    public AppointmentRequest confirmAppointment(AppointmentRequest appointmentRequest);
 }

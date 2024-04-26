@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.appointment.apptapi.config.FirestoreConfig;
+import com.example.appointment.apptapi.pojo.AppointmentRequest;
 import com.example.appointment.apptapi.pojo.AppointmentSchedule;
 import com.example.appointment.apptapi.pojo.AppointmentSlot;
 import com.example.appointment.apptapi.config.FirestoreConfig;
@@ -21,6 +22,9 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.CollectionReference;
+
+import java.util.Map;
+import java.util.HashMap;
 
 @Service
 public class AppointmentBroker {
@@ -58,9 +62,27 @@ public class AppointmentBroker {
         return listAppointmentSchedule;
     }
 
-    public boolean confirmAppointment(User user, AppointmentSlot appointmentSlot) {
+    public AppointmentRequest confirmAppointment(AppointmentRequest appointmentRequest) {
 
-        return true;
+        DocumentReference docRef = null;
+        try {
+
+            ApiFuture<DocumentReference> result = firestore.getConnection().collection("confirm")
+                    .add(appointmentRequest);
+            docRef = result.get();
+
+            docRef.getId();
+
+            appointmentRequest
+                    .setComments("Appointment is created for " + appointmentRequest.getFirstName() + " "
+                            + appointmentRequest.getLastName() + " and here is your confirmation number is "
+                            + docRef.getId());
+
+        } catch (InterruptedException | ExecutionException e) {
+            throw new BrokerException(e.getMessage());
+        }
+
+        return appointmentRequest;
     }
 
 }
