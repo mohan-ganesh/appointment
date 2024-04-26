@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.appointment.apptapi.api.UserApi;
 import com.example.appointment.apptapi.pojo.User;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -37,7 +36,8 @@ public class UserController {
 
     @RequestMapping(path = "/user", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createUser(@RequestBody User userInput) {
-
+        
+        logger.info("createUser() - " + userInput.toString());
         return ResponseEntity.ok(userApi.createUser(userInput));
 
     }

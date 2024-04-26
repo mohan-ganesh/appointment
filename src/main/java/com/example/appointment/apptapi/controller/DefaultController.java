@@ -22,7 +22,7 @@ public class DefaultController {
      * @return String
      */
     @RequestMapping(path = "/healthcheck", method = RequestMethod.GET)
-    public ResponseEntity healthcheck() {
+    public ResponseEntity<String> healthcheck() {
 
         return ResponseEntity.ok("alive...");
 
@@ -36,7 +36,7 @@ public class DefaultController {
      */
 
     @RequestMapping(path = "/identity", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity identity(HttpServletRequest request) {
+    public ResponseEntity<String> identity(HttpServletRequest request) {
 
         String authInfo = request.getHeader("x-apigateway-api-userinfo");
         byte data[] = Base64.getDecoder().decode(authInfo);

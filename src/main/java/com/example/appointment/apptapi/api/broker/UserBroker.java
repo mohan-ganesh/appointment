@@ -53,7 +53,7 @@ public class UserBroker {
     public User createUser(User user) {
 
         String nodePath = "users";
-
+        logger.info("createUser(user)" + user.toString());
         ApiFuture<WriteResult> documentReference = firestore.getConnection().collection(nodePath)
                 .document(user.getMemberId()).create(user);
         logger.info(documentReference.toString());
