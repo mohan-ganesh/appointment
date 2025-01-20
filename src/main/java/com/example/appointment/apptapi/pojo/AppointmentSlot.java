@@ -11,6 +11,8 @@ public class AppointmentSlot extends Appointment {
 
     public String endTime;
 
+    public String comments;
+
     public Appointment appointments;
 
     public AppointmentSlot() {
@@ -48,9 +50,16 @@ public class AppointmentSlot extends Appointment {
         this.appointments = appointments;
     }
 
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getComments(){
+        return this.comments;
+    }
     @Override
     public String toString() {
         return "AppointmentSlot [startTime=" + startTime + ", endTime=" + endTime + ", appointments=" + appointments
-                + "]";
+                + ", comments="+ comments + "]";
     }
 }
