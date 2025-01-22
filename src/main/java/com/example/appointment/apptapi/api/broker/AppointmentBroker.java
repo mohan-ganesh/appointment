@@ -25,6 +25,7 @@ import com.google.cloud.firestore.CollectionReference;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Random;
 
 @Service
 public class AppointmentBroker {
@@ -73,10 +74,20 @@ public class AppointmentBroker {
 
             docRef.getId();
 
+            Random random = new Random();
+            // Generate the first four digits
+            int firstPart = random.nextInt(10000);
+
+            // Generate the last four digits
+            int secondPart = random.nextInt(10000);
+
+            // Format the output
+            String formattedNumber = String.format("%04d-%04d", firstPart, secondPart);
+
             appointmentRequest
                     .setComments("Appointment is created for " + appointmentRequest.getFirstName() + " "
-                            + appointmentRequest.getLastName() + " and here is your confirmation number is "
-                            + docRef.getId());
+                            + appointmentRequest.getLastName() + " and here is your confirmation code :  "
+                            + formattedNumber);
 
         } catch (InterruptedException | ExecutionException e) {
             throw new BrokerException(e.getMessage());

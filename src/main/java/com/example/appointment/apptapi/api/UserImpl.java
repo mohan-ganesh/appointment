@@ -24,7 +24,7 @@ public class UserImpl implements UserApi {
         if (null == user) {
             user = new User("User not found for " + memberId);
         } else {
-            user.setComments("Retrieved the existing user " + memberId);
+            user.setComments("Retrieved the existing user with member id : " + memberId);
         }
 
         return user;
@@ -38,7 +38,7 @@ public class UserImpl implements UserApi {
         User user = userBroker.getUserDetails(inputUser.getMemberId());
         if (null == user) {
             user = userBroker.createUser(inputUser);
-            user.setComments("Created new user " + inputUser.getMemberId());
+            user.setComments("Created new user with member id : " + inputUser.getMemberId());
         } else {
             user.setComments("Updated the properties for " + inputUser.getMemberId());
         }

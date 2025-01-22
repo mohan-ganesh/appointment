@@ -1,9 +1,14 @@
 package com.example.appointment.apptapi.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Appointment {
 
     String id;
+
+    @JsonIgnore
     String userId;
+    
     String status;
 
     public Appointment() {
